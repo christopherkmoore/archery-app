@@ -12,10 +12,13 @@ class ScoreCardViewController: UIViewController {
 
     @IBOutlet weak var scoreViews: UIStackView!
     @IBOutlet weak var scorecardStackView: UIStackView!
+    var scoreBoxView: ScoreBoxesView!
     override func viewDidLoad() {
         super.viewDidLoad()
         //autolayout the stack view - pin 30 up 20 left 20 right 30 down
-        let scoreBoxView = ScoreBoxesView(frame: self.view.frame, numberOfInputs: 6)
+        scoreBoxView = ScoreBoxesView(frame: self.view.frame, numberOfInputs: 6)
+        scoreBoxView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.view.addSubview(scoreBoxView)
         let viewsDictionary = ["scoreBoxView":scoreBoxView]
         let scorebox_view_H = NSLayoutConstraint.constraintsWithVisualFormat(
@@ -32,9 +35,12 @@ class ScoreCardViewController: UIViewController {
         self.view.addConstraints(scorebox_view_H)
         self.view.addConstraints(scorebox_view_V)
 
-
+        scoreBoxView.setNeedsUpdateConstraints()
+        view.setNeedsUpdateConstraints()
     }
-    
+    override func updateViewConstraints() {
+               super.updateViewConstraints()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
