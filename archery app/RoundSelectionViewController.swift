@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol RoundSelection {
+    
+    func roundSelected(selection: Round)
+}
+
 class RoundSelectionViewController: UIViewController {
 
     override func viewDidLoad() {

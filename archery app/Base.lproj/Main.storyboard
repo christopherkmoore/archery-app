@@ -96,8 +96,8 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4y6-jd-2YQ">
                                                 <rect key="frame" x="280" y="61" width="280" height="29"/>
                                                 <segments>
-                                                    <segment title="5 Band"/>
-                                                    <segment title="10 Band"/>
+                                                    <segment title="Metric"/>
+                                                    <segment title="Imperial"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>
@@ -294,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kdh-87-q5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="1195"/>
+            <point key="canvasLocation" x="414" y="1162"/>
         </scene>
     </scenes>
 </document>
