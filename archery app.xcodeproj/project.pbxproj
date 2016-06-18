@@ -14,6 +14,7 @@
 		3C1FA4531D07523C0051465A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FA4511D07523C0051465A /* Main.storyboard */; };
 		3C1FA4551D07523C0051465A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FA4541D07523C0051465A /* Assets.xcassets */; };
 		3C1FA4581D07523C0051465A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FA4561D07523C0051465A /* LaunchScreen.storyboard */; };
+		3C55CE501D155CE5003B4EEF /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */; };
 		3C7090C61D0C15CD00124FE1 /* ScoreBoxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */; };
 		3CD394031D07F65600DB2949 /* RoundSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD394021D07F65600DB2949 /* RoundSelectionViewController.swift */; };
 		3CD394051D08105200DB2949 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD394041D08105200DB2949 /* KeyPadView.swift */; };
@@ -32,6 +33,7 @@
 		3C1FA4541D07523C0051465A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C1FA4571D07523C0051465A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C1FA4591D07523C0051465A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
 		3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoxesView.swift; sourceTree = "<group>"; };
 		3CD394021D07F65600DB2949 /* RoundSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundSelectionViewController.swift; sourceTree = "<group>"; };
 		3CD394041D08105200DB2949 /* KeyPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */,
 				3C1F49611D107B92000B9E58 /* Round.swift */,
 				3C1F49631D107DCD000B9E58 /* End.swift */,
+				3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */,
 			);
 			path = "archery app";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				3CD394071D0810D200DB2949 /* ScoreCardViewController.swift in Sources */,
 				3C1F49621D107B92000B9E58 /* Round.swift in Sources */,
 				3C1F49641D107DCD000B9E58 /* End.swift in Sources */,
+				3C55CE501D155CE5003B4EEF /* TargetViewController.swift in Sources */,
 				3CD394031D07F65600DB2949 /* RoundSelectionViewController.swift in Sources */,
 				3C7090C61D0C15CD00124FE1 /* ScoreBoxesView.swift in Sources */,
 				3C1FA4501D07523C0051465A /* RoundListViewController.swift in Sources */,
