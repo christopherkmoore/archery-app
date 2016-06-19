@@ -66,7 +66,6 @@ class TargetViewController: UIViewController {
         let touchLocation = img.locationInView(img.view.window)
         print(touchLocation)
         imageView.center = touchLocation
-        imageView.meta
         view.addSubview(imageView)
     }
     override func didReceiveMemoryWarning() {

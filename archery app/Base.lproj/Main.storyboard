@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Esd-eb-OR1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ccP-KJ-bO2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -63,106 +63,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nH7-74-NEH">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hbt-g9-dza">
+                                <rect key="frame" x="40" y="536" width="520" height="44"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CAz-Jm-1CO">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="150"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Bow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-wu-tei">
-                                                <rect key="frame" x="0.0" y="65" width="280" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-T4-Y6k">
-                                                <rect key="frame" x="280" y="61" width="280" height="29"/>
-                                                <segments>
-                                                    <segment title="Recurve"/>
-                                                    <segment title="Compound"/>
-                                                </segments>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iql-kY-tIR">
-                                        <rect key="frame" x="0.0" y="150" width="560" height="150"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Marking Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNY-aM-fwB">
-                                                <rect key="frame" x="0.0" y="65" width="280" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4y6-jd-2YQ">
-                                                <rect key="frame" x="280" y="61" width="280" height="29"/>
-                                                <segments>
-                                                    <segment title="Metric"/>
-                                                    <segment title="Imperial"/>
-                                                </segments>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vZB-NO-qta">
-                                        <rect key="frame" x="0.0" y="300" width="560" height="150"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGq-qj-2Uh">
-                                                <rect key="frame" x="0.0" y="65" width="280" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cKG-jK-rXR">
-                                                <rect key="frame" x="280" y="61" width="280" height="29"/>
-                                                <segments>
-                                                    <segment title="1"/>
-                                                    <segment title="2"/>
-                                                    <segment title="3"/>
-                                                    <segment title="4"/>
-                                                    <segment title="5"/>
-                                                    <segment title="6"/>
-                                                </segments>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ImD-Rc-cAE">
-                                        <rect key="frame" x="0.0" y="450" width="560" height="150"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c0s-wR-EbK">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="150"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlE-A2-bhq">
-                                                        <rect key="frame" x="0.0" y="60" width="280" height="30"/>
-                                                        <state key="normal" title="Cancel"/>
-                                                        <connections>
-                                                            <action selector="cancelButtonClicked:" destination="ccP-KJ-bO2" eventType="touchUpInside" id="iL2-Bg-ofI"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nK9-e2-jjQ">
-                                                        <rect key="frame" x="280" y="60" width="280" height="30"/>
-                                                        <state key="normal" title="Create Round"/>
-                                                        <connections>
-                                                            <action selector="createRoundClicked:" destination="ccP-KJ-bO2" eventType="touchUpInside" id="mLg-Sx-wso"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHP-B2-LcE">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.122539656" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhS-Ob-Xiz">
+                                        <rect key="frame" x="270" y="0.0" width="250" height="44"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="CREATE ROUND">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="D5Z-DN-5a8"/>
+                                </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="365-Tb-0bY" customClass="SegmentedControl" customModule="archery_app" customModuleProvider="target">
+                                <rect key="frame" x="20" y="143" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gq5-Cy-NeZ"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="bowChoiceClicked:" destination="ccP-KJ-bO2" eventType="valueChanged" id="6yF-kY-ANM"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK7-zl-ExR" customClass="SegmentedControl" customModule="archery_app" customModuleProvider="target">
+                                <rect key="frame" x="20" y="223" width="560" height="40"/>
+                                <connections>
+                                    <action selector="bowChoiceClicked:" destination="ccP-KJ-bO2" eventType="valueChanged" id="Oh1-6u-6X0"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCP-z9-zu7" customClass="SegmentedControl" customModule="archery_app" customModuleProvider="target">
+                                <rect key="frame" x="20" y="300" width="560" height="40"/>
+                                <connections>
+                                    <action selector="bowChoiceClicked:" destination="ccP-KJ-bO2" eventType="valueChanged" id="qYL-al-k8t"/>
+                                </connections>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nH7-74-NEH" firstAttribute="trailing" secondItem="77Z-dn-rj6" secondAttribute="trailingMargin" id="HRV-K7-XuS"/>
-                            <constraint firstItem="nH7-74-NEH" firstAttribute="top" secondItem="77Z-dn-rj6" secondAttribute="topMargin" id="MV1-Fz-LSs"/>
-                            <constraint firstItem="8zg-af-kpM" firstAttribute="top" secondItem="nH7-74-NEH" secondAttribute="bottom" id="OAl-ae-VLq"/>
-                            <constraint firstItem="nH7-74-NEH" firstAttribute="leading" secondItem="77Z-dn-rj6" secondAttribute="leadingMargin" id="yug-zM-Uvh"/>
+                            <constraint firstItem="lK7-zl-ExR" firstAttribute="leading" secondItem="365-Tb-0bY" secondAttribute="leading" id="7uS-Ro-OFx"/>
+                            <constraint firstAttribute="bottom" secondItem="lK7-zl-ExR" secondAttribute="bottom" constant="337" id="9AN-F3-6cq"/>
+                            <constraint firstAttribute="bottom" secondItem="LCP-z9-zu7" secondAttribute="bottom" constant="260" id="9XU-Q0-1Nk"/>
+                            <constraint firstItem="LCP-z9-zu7" firstAttribute="trailing" secondItem="lK7-zl-ExR" secondAttribute="trailing" id="Apq-am-WVn"/>
+                            <constraint firstItem="LCP-z9-zu7" firstAttribute="top" secondItem="lK7-zl-ExR" secondAttribute="bottom" constant="37" id="FWJ-tf-oTf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hbt-g9-dza" secondAttribute="trailing" constant="20" id="G89-qJ-oYT"/>
+                            <constraint firstItem="8zg-af-kpM" firstAttribute="top" secondItem="Hbt-g9-dza" secondAttribute="bottom" constant="20" id="LCp-H3-BXU"/>
+                            <constraint firstItem="365-Tb-0bY" firstAttribute="trailing" secondItem="77Z-dn-rj6" secondAttribute="trailingMargin" id="MmX-vD-WhE"/>
+                            <constraint firstItem="lK7-zl-ExR" firstAttribute="trailing" secondItem="365-Tb-0bY" secondAttribute="trailing" id="YLs-oy-HOn"/>
+                            <constraint firstItem="LCP-z9-zu7" firstAttribute="leading" secondItem="lK7-zl-ExR" secondAttribute="leading" id="Yuk-ve-dI2"/>
+                            <constraint firstItem="lK7-zl-ExR" firstAttribute="top" secondItem="365-Tb-0bY" secondAttribute="bottom" constant="40" id="blw-Qn-yZN"/>
+                            <constraint firstItem="365-Tb-0bY" firstAttribute="top" secondItem="zZN-iE-ba9" secondAttribute="bottom" constant="123" id="dO6-wb-yRc"/>
+                            <constraint firstItem="Hbt-g9-dza" firstAttribute="leading" secondItem="77Z-dn-rj6" secondAttribute="leadingMargin" constant="20" id="mkQ-FL-rbN"/>
+                            <constraint firstItem="365-Tb-0bY" firstAttribute="leading" secondItem="77Z-dn-rj6" secondAttribute="leadingMargin" id="uUx-XZ-RNs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bowChoiceControl" destination="365-Tb-0bY" id="wNG-gE-1VZ"/>
+                        <outlet property="ends" destination="LCP-z9-zu7" id="igJ-Ed-y79"/>
+                        <outlet property="scoreType" destination="lK7-zl-ExR" id="Mje-fx-ozu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mW3-4a-5Vm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1226" y="1195"/>
+            <point key="canvasLocation" x="1226" y="1162"/>
         </scene>
         <!--Score Card View Controller-->
         <scene sceneID="rIO-7J-R4I">

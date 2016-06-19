@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0932171D159BCE004701D9 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0932161D159BCE004701D9 /* SegmentedControl.swift */; };
 		3C1F49621D107B92000B9E58 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1F49611D107B92000B9E58 /* Round.swift */; };
 		3C1F49641D107DCD000B9E58 /* End.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1F49631D107DCD000B9E58 /* End.swift */; };
 		3C1FA44E1D07523C0051465A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1FA44D1D07523C0051465A /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		207745CFB09CBC3C50E38A9F /* Pods-archery app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-archery app.release.xcconfig"; path = "Pods/Target Support Files/Pods-archery app/Pods-archery app.release.xcconfig"; sourceTree = "<group>"; };
+		3C0932161D159BCE004701D9 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		3C1F49611D107B92000B9E58 /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		3C1F49631D107DCD000B9E58 /* End.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = End.swift; sourceTree = "<group>"; };
 		3C1FA44A1D07523C0051465A /* archery app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "archery app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 				3C1F49611D107B92000B9E58 /* Round.swift */,
 				3C1F49631D107DCD000B9E58 /* End.swift */,
 				3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */,
+				3C0932161D159BCE004701D9 /* SegmentedControl.swift */,
 			);
 			path = "archery app";
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				3CD394031D07F65600DB2949 /* RoundSelectionViewController.swift in Sources */,
 				3C7090C61D0C15CD00124FE1 /* ScoreBoxesView.swift in Sources */,
 				3C1FA4501D07523C0051465A /* RoundListViewController.swift in Sources */,
+				3C0932171D159BCE004701D9 /* SegmentedControl.swift in Sources */,
 				3C1FA44E1D07523C0051465A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
