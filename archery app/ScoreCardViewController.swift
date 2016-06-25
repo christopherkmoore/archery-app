@@ -12,31 +12,33 @@ class ScoreCardViewController: UIViewController {
 
     @IBOutlet weak var scoreViews: UIStackView!
     @IBOutlet weak var scorecardStackView: UIStackView!
+    var scores: [Int]?
     var scoreBoxView: ScoreBoxesView!
+    var round: Round?
     override func viewDidLoad() {
         super.viewDidLoad()
         //autolayout the stack view - pin 30 up 20 left 20 right 30 down
-        scoreBoxView = ScoreBoxesView(frame: self.view.frame, numberOfInputs: 6)
-        scoreBoxView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(scoreBoxView)
-        let viewsDictionary = ["scoreBoxView":scoreBoxView]
-        let scorebox_view_H = NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-20-[scoreBoxView]-20-|",  //horizontal constraint 20 points from left and right side
-            options: NSLayoutFormatOptions(rawValue: 0),
-            metrics: nil,
-            views: viewsDictionary)
-        let scorebox_view_V = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-20-[scoreBoxView(44)]", //vertical constraint 30 points from top and bottom
-            options: NSLayoutFormatOptions(rawValue:0),
-            metrics: nil,
-            views: viewsDictionary)
-        
-        self.view.addConstraints(scorebox_view_H)
-        self.view.addConstraints(scorebox_view_V)
-
-        scoreBoxView.setNeedsUpdateConstraints()
-        view.setNeedsUpdateConstraints()
+//        scoreBoxView = ScoreBoxesView(frame: self.view.frame, numberOfInputs: 6)
+//        scoreBoxView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        self.view.addSubview(scoreBoxView)
+//        let viewsDictionary = ["scoreBoxView":scoreBoxView]
+//        let scorebox_view_H = NSLayoutConstraint.constraintsWithVisualFormat(
+//            "H:|-20-[scoreBoxView]-20-|",  //horizontal constraint 20 points from left and right side
+//            options: NSLayoutFormatOptions(rawValue: 0),
+//            metrics: nil,
+//            views: viewsDictionary)
+//        let scorebox_view_V = NSLayoutConstraint.constraintsWithVisualFormat(
+//            "V:|-20-[scoreBoxView(44)]", //vertical constraint 30 points from top and bottom
+//            options: NSLayoutFormatOptions(rawValue:0),
+//            metrics: nil,
+//            views: viewsDictionary)
+//        
+//        self.view.addConstraints(scorebox_view_H)
+//        self.view.addConstraints(scorebox_view_V)
+//
+//        scoreBoxView.setNeedsUpdateConstraints()
+//        view.setNeedsUpdateConstraints()
     }
     override func updateViewConstraints() {
                super.updateViewConstraints()

@@ -18,6 +18,8 @@ class Round: Object {
     
     let ends = List<End>()
     dynamic var name: String?
+    dynamic var arrows: Int = 0
+    
     private dynamic var bowType = BowType.Recurve.rawValue
     
     var bow: BowType {
