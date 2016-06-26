@@ -31,9 +31,14 @@ class RoundListViewController: UIViewController {
         self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        if segue!.identifier == "SelectedRound" {
+            let viewController: ScoreCardViewController = segue!.destinationViewController as! ScoreCardViewController
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            viewController.round = self.rounds![indexPath.row]
+            
+        }
+        
     }
 }
 
