@@ -7,10 +7,16 @@
 //
 
 import UIKit
+
+protocol KeyPadDelegate: class {
+    func didPressKey(sender: KeyPadView, key: Int )
+    func didPressKey(sender: KeyPadView, specialKey: String)
+}
 @IBDesignable
 class KeyPadView: UIView {
     
     var view: UIView!
+    weak var delegate: KeyPadDelegate?
     
     let (columns, rows) = (4, 6) as (CGFloat, CGFloat)
     
@@ -37,12 +43,8 @@ class KeyPadView: UIView {
     {
         let newButton = UIButton(type: .System)
         newButton.backgroundColor = color
-        newButton.setTitle(
-            title,
-            forState: .Normal)
-        newButton.setTitleColor(
-            UIColor.whiteColor(),
-            forState: .Normal)
+        newButton.setTitle(title, forState: .Normal)
+        newButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         newButton.layer.cornerRadius = 10
         newButton.titleLabel!.font =  UIFont(name: "HelveticaNeue-Bold", size: 30)
         return newButton
@@ -63,12 +65,11 @@ class KeyPadView: UIView {
             rowStackview.distribution = .FillEqually
             rowStackview.alignment = .Fill
             rowStackview.spacing = 10
-            for (columnNumber, text) in row.enumerate() {
- 
-                rowStackview.addArrangedSubview(colorButton(
-                    withColor: colorDictionary[rowNumber]!,
-                    title: text
-                    ))
+            for (_, text) in row.enumerate() {
+                
+                let button = colorButton(withColor: colorDictionary[rowNumber]!,title: text)
+                button.addTarget(self, action: #selector(KeyPadView.numberPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                rowStackview.addArrangedSubview(button)
             }
             stackView.addArrangedSubview(rowStackview)
         }
@@ -77,14 +78,13 @@ class KeyPadView: UIView {
         rowStackview.distribution = .FillEqually
         rowStackview.alignment = .Fill
         rowStackview.spacing = 5
-        rowStackview.addArrangedSubview(colorButton(
-            withColor: colorDictionary[4]!,
-            title: "0"
-            ))
-        rowStackview.addArrangedSubview(colorButton(
-            withColor: colorDictionary[5]!,
-            title: "OK"
-            ))
+        let zeroButton = colorButton(withColor: colorDictionary[4]!, title: "0")
+        zeroButton.addTarget(self, action: #selector(KeyPadView.numberPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        rowStackview.addArrangedSubview(zeroButton)
+        
+        let okButton = colorButton(withColor: colorDictionary[5]!, title: "OK")
+        okButton.addTarget(self, action: #selector(KeyPadView.specialKeyPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        rowStackview.addArrangedSubview(okButton)
         
         stackView.addArrangedSubview(rowStackview)
         self.addSubview(stackView)
@@ -116,6 +116,13 @@ class KeyPadView: UIView {
         displayKeyboard()
     }
     
+    func numberPressed(sender: UIButton) {
+        self.delegate?.didPressKey(self, key: Int(sender.titleLabel!.text!)!)
+    }
+    
+    func specialKeyPressed(sender: UIButton) {
+        self.delegate?.didPressKey(self, specialKey: sender.titleLabel!.text!)
+    }
     
 }
 

@@ -13,6 +13,8 @@ class ScoreCardViewController: UIViewController {
     @IBOutlet weak var scoreViews: UIStackView!
     @IBOutlet weak var scorecardStackView: UIStackView!
     @IBOutlet weak var toggle: SegmentedControl!
+    
+    @IBOutlet weak var keyPad: KeyPadView!
     var scores: [Int] = [9, 8, 2]
     var scoreBoxView: ScoreBoxesView!
     var round: Round?
@@ -27,6 +29,7 @@ class ScoreCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        keyPad.delegate = self
         scoreViews.translatesAutoresizingMaskIntoConstraints = false
         toggle.items = ["Scoring", "Ends"]
         for score in 1...round!.arrows {
@@ -55,4 +58,17 @@ class ScoreCardViewController: UIViewController {
             }
         }
     }
+}
+
+extension ScoreCardViewController: KeyPadDelegate {
+    
+    func didPressKey(sender: KeyPadView, key: Int ) {
+        print(key)
+    }
+    
+    func didPressKey(sender: KeyPadView, specialKey: String) {
+        print(specialKey)
+    }
+
+    
 }
