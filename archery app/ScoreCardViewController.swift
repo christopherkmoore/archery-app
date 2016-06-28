@@ -18,6 +18,7 @@ class ScoreCardViewController: UIViewController {
     var scores: [Int] = [9, 8, 2]
     var scoreBoxView: ScoreBoxesView!
     var round: Round?
+    var selectedIndex = 0
     let colorDictionary = [
         0:UIColor(red: 220/255, green: 224/255, blue: 85/255, alpha: 1.0),
         1:UIColor(red: 224/255, green: 85/255, blue: 85/255, alpha: 1.0),
@@ -32,30 +33,20 @@ class ScoreCardViewController: UIViewController {
         keyPad.delegate = self
         scoreViews.translatesAutoresizingMaskIntoConstraints = false
         toggle.items = ["Scoring", "Ends"]
-        for score in 1...round!.arrows {
-            if (scores.indices.contains(score)) {
-                print("adding label")
-                let label = UILabel()
-                label.bounds = CGRectMake(0.0, 0.0, 50, 50)
-                label.layer.cornerRadius = 25
-                label.layer.backgroundColor = colorDictionary[score]?.CGColor
-                label.text = "\(scores[score - 1])"
-                label.textColor = UIColor.whiteColor()
-                label.textAlignment = .Center
-                label.widthAnchor.constraintEqualToConstant(50).active = true;
-                label.heightAnchor.constraintEqualToConstant(50).active = true;
-                scoreViews.addArrangedSubview(label)
-
-            } else {
-                let label = UILabel()
-                label.bounds = CGRectMake(0.0, 0.0, 50, 50)
-                label.layer.cornerRadius = 25
-                label.layer.backgroundColor = UIColor.lightGrayColor().CGColor
-                label.textAlignment = .Center
-                label.widthAnchor.constraintEqualToConstant(50).active = true;
-                label.heightAnchor.constraintEqualToConstant(50).active = true;
-                scoreViews.addArrangedSubview(label)
-            }
+        setupScoreBoard()
+    }
+    
+    func setupScoreBoard() {
+        for _ in 1...6 {
+            let label = UILabel()
+            label.bounds = CGRectMake(0.0, 0.0, 50, 50)
+            label.layer.cornerRadius = 25
+            label.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            label.textAlignment = .Center
+            label.widthAnchor.constraintEqualToConstant(50).active = true;
+            label.heightAnchor.constraintEqualToConstant(50).active = true;
+            scoreViews.addArrangedSubview(label)
+            
         }
     }
 }
@@ -63,7 +54,11 @@ class ScoreCardViewController: UIViewController {
 extension ScoreCardViewController: KeyPadDelegate {
     
     func didPressKey(sender: KeyPadView, key: Int ) {
-        print(key)
+        if selectedIndex < round?.arrows {
+            let label = scoreViews.arrangedSubviews[selectedIndex]as! UILabel
+            label.text = "\(key)"
+            selectedIndex += 1
+        }
     }
     
     func didPressKey(sender: KeyPadView, specialKey: String) {
