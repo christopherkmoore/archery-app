@@ -10,5 +10,7 @@ import Foundation
 import RealmSwift
 
 class End: Object {
-    dynamic var value = 0
+    let shots = List<Shot>()
+    dynamic var createdAt = NSDate()
+    dynamic var updatedAt = NSDate()
 }

@@ -15,6 +15,8 @@
 		3C1FA4531D07523C0051465A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FA4511D07523C0051465A /* Main.storyboard */; };
 		3C1FA4551D07523C0051465A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FA4541D07523C0051465A /* Assets.xcassets */; };
 		3C1FA4581D07523C0051465A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1FA4561D07523C0051465A /* LaunchScreen.storyboard */; };
+		3C2F80C61D29742F00FE169A /* EndTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F80C51D29742F00FE169A /* EndTableViewCell.swift */; };
+		3C3F7A761D28142C00289283 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F7A751D28142C00289283 /* DoubleExtension.swift */; };
 		3C432B671D1E8E3200B0487A /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C432B5D1D1E8E3200B0487A /* OpenSans-Bold.ttf */; };
 		3C432B681D1E8E3200B0487A /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C432B5E1D1E8E3200B0487A /* OpenSans-BoldItalic.ttf */; };
 		3C432B691D1E8E3200B0487A /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C432B5F1D1E8E3200B0487A /* OpenSans-ExtraBold.ttf */; };
@@ -28,6 +30,8 @@
 		3C432B761D1E8E4100B0487A /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C432B721D1E8E4100B0487A /* RobotoSlab-Light.ttf */; };
 		3C432B771D1E8E4100B0487A /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C432B731D1E8E4100B0487A /* RobotoSlab-Regular.ttf */; };
 		3C55CE501D155CE5003B4EEF /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */; };
+		3C5804131D26606400E34CBB /* ColourExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5804121D26606400E34CBB /* ColourExtensions.swift */; };
+		3C68464F1D2301550033B306 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68464E1D2301550033B306 /* Shot.swift */; };
 		3C7090C61D0C15CD00124FE1 /* ScoreBoxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */; };
 		3CD394031D07F65600DB2949 /* RoundSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD394021D07F65600DB2949 /* RoundSelectionViewController.swift */; };
 		3CD394051D08105200DB2949 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD394041D08105200DB2949 /* KeyPadView.swift */; };
@@ -47,6 +51,8 @@
 		3C1FA4541D07523C0051465A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C1FA4571D07523C0051465A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C1FA4591D07523C0051465A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C2F80C51D29742F00FE169A /* EndTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndTableViewCell.swift; sourceTree = "<group>"; };
+		3C3F7A751D28142C00289283 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		3C432B5D1D1E8E3200B0487A /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../../../Downloads/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		3C432B5E1D1E8E3200B0487A /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "../../../Downloads/Open_Sans/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		3C432B5F1D1E8E3200B0487A /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "../../../Downloads/Open_Sans/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -60,6 +66,8 @@
 		3C432B721D1E8E4100B0487A /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Light.ttf"; path = "../../../Downloads/Roboto_Slab/RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
 		3C432B731D1E8E4100B0487A /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Regular.ttf"; path = "../../../Downloads/Roboto_Slab/RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
 		3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
+		3C5804121D26606400E34CBB /* ColourExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourExtensions.swift; sourceTree = "<group>"; };
+		3C68464E1D2301550033B306 /* Shot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoxesView.swift; sourceTree = "<group>"; };
 		3CD394021D07F65600DB2949 /* RoundSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundSelectionViewController.swift; sourceTree = "<group>"; };
 		3CD394041D08105200DB2949 /* KeyPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
@@ -101,23 +109,58 @@
 		3C1FA44C1D07523C0051465A /* archery app */ = {
 			isa = PBXGroup;
 			children = (
+				3C3F7A741D27BE5D00289283 /* Controls */,
+				3C3F7A731D27BE4200289283 /* Models */,
+				3C3F7A721D27BE1B00289283 /* Controllers */,
+				3C3F7A711D27BE0400289283 /* Views */,
+				3C5804111D26605000E34CBB /* Extensions */,
 				3C432B5C1D1E8DD900B0487A /* Fonts */,
 				3C1FA44D1D07523C0051465A /* AppDelegate.swift */,
-				3C1FA44F1D07523C0051465A /* RoundListViewController.swift */,
 				3C1FA4511D07523C0051465A /* Main.storyboard */,
 				3C1FA4541D07523C0051465A /* Assets.xcassets */,
 				3C1FA4561D07523C0051465A /* LaunchScreen.storyboard */,
 				3C1FA4591D07523C0051465A /* Info.plist */,
-				3CD394021D07F65600DB2949 /* RoundSelectionViewController.swift */,
-				3CD394041D08105200DB2949 /* KeyPadView.swift */,
-				3CD394061D0810D200DB2949 /* ScoreCardViewController.swift */,
-				3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */,
-				3C1F49611D107B92000B9E58 /* Round.swift */,
-				3C1F49631D107DCD000B9E58 /* End.swift */,
-				3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */,
-				3C0932161D159BCE004701D9 /* SegmentedControl.swift */,
 			);
 			path = "archery app";
+			sourceTree = "<group>";
+		};
+		3C3F7A711D27BE0400289283 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CD394041D08105200DB2949 /* KeyPadView.swift */,
+				3C7090C51D0C15CD00124FE1 /* ScoreBoxesView.swift */,
+				3C2F80C51D29742F00FE169A /* EndTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3C3F7A721D27BE1B00289283 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C1FA44F1D07523C0051465A /* RoundListViewController.swift */,
+				3CD394021D07F65600DB2949 /* RoundSelectionViewController.swift */,
+				3CD394061D0810D200DB2949 /* ScoreCardViewController.swift */,
+				3C55CE4F1D155CE5003B4EEF /* TargetViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3C3F7A731D27BE4200289283 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C1F49611D107B92000B9E58 /* Round.swift */,
+				3C1F49631D107DCD000B9E58 /* End.swift */,
+				3C68464E1D2301550033B306 /* Shot.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3C3F7A741D27BE5D00289283 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				3C0932161D159BCE004701D9 /* SegmentedControl.swift */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 		3C432B5C1D1E8DD900B0487A /* Fonts */ = {
@@ -137,6 +180,15 @@
 				3C432B661D1E8E3200B0487A /* OpenSans-SemiboldItalic.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		3C5804111D26605000E34CBB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C5804121D26606400E34CBB /* ColourExtensions.swift */,
+				3C3F7A751D28142C00289283 /* DoubleExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		8C6B561BA237C70F41EED4DE /* Pods */ = {
@@ -163,12 +215,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C1FA45C1D07523C0051465A /* Build configuration list for PBXNativeTarget "archery app" */;
 			buildPhases = (
+				BCA7760A1C78C9C4907B4C4F /* 📦 Check Pods Manifest.lock */,
 				E00DF43E402CD7725FAD2516 /* [CP] Check Pods Manifest.lock */,
 				3C1FA4461D07523C0051465A /* Sources */,
 				3C1FA4471D07523C0051465A /* Frameworks */,
 				3C1FA4481D07523C0051465A /* Resources */,
 				A6CF70274241A6A6F435B51D /* [CP] Embed Pods Frameworks */,
 				31A11570C02B8DB5B1324E75 /* [CP] Copy Pods Resources */,
+				293E2CD52C20FE9AC4F5BE99 /* 📦 Embed Pods Frameworks */,
+				98025D4357DDAEA6D0F4BC62 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +294,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		293E2CD52C20FE9AC4F5BE99 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-archery app/Pods-archery app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		31A11570C02B8DB5B1324E75 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,6 +317,21 @@
 			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-archery app/Pods-archery app-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98025D4357DDAEA6D0F4BC62 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +352,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-archery app/Pods-archery app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCA7760A1C78C9C4907B4C4F /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E00DF43E402CD7725FAD2516 /* [CP] Check Pods Manifest.lock */ = {
@@ -292,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CD394051D08105200DB2949 /* KeyPadView.swift in Sources */,
+				3C2F80C61D29742F00FE169A /* EndTableViewCell.swift in Sources */,
 				3CD394071D0810D200DB2949 /* ScoreCardViewController.swift in Sources */,
 				3C1F49621D107B92000B9E58 /* Round.swift in Sources */,
 				3C1F49641D107DCD000B9E58 /* End.swift in Sources */,
@@ -299,7 +400,10 @@
 				3CD394031D07F65600DB2949 /* RoundSelectionViewController.swift in Sources */,
 				3C7090C61D0C15CD00124FE1 /* ScoreBoxesView.swift in Sources */,
 				3C1FA4501D07523C0051465A /* RoundListViewController.swift in Sources */,
+				3C3F7A761D28142C00289283 /* DoubleExtension.swift in Sources */,
 				3C0932171D159BCE004701D9 /* SegmentedControl.swift in Sources */,
+				3C5804131D26606400E34CBB /* ColourExtensions.swift in Sources */,
+				3C68464F1D2301550033B306 /* Shot.swift in Sources */,
 				3C1FA44E1D07523C0051465A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iangristock.archery-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -438,6 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iangristock.archery-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

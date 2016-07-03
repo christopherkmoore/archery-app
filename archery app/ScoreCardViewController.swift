@@ -7,63 +7,110 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ScoreCardViewController: UIViewController {
 
-    @IBOutlet weak var scoreViews: UIStackView!
-    @IBOutlet weak var scorecardStackView: UIStackView!
     @IBOutlet weak var toggle: SegmentedControl!
-    
+    @IBOutlet weak var scoreBoxView: ScoreBoxesView!
     @IBOutlet weak var keyPad: KeyPadView!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var totalGoldLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var endsPlayedLabel: UILabel!
+    
     var scores: [Int] = [9, 8, 2]
-    var scoreBoxView: ScoreBoxesView!
+
+    @IBOutlet weak var endAverage: UILabel!
+    
     var round: Round?
-    var selectedIndex = 0
-    let colorDictionary = [
-        0:UIColor(red: 220/255, green: 224/255, blue: 85/255, alpha: 1.0),
-        1:UIColor(red: 224/255, green: 85/255, blue: 85/255, alpha: 1.0),
-        2:UIColor(red: 85/255, green: 145/255, blue: 224/255, alpha: 1.0),
-        3:UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1.0),
-        4:UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0),
-        5:UIColor(red: 113/255, green: 199/255, blue: 119/255, alpha: 1.0)
-    ]
+    
+    @IBAction func toggleClicked(sender: SegmentedControl) {
+        switch(sender.selectedIndex) {
+        case 0:
+            tableView.hidden = true
+            scoreBoxView.hidden = false
+            keyPad.hidden = false
+            break
+        case 1:
+            tableView.hidden = false
+            scoreBoxView.hidden = true
+            keyPad.hidden = true
+            tableView.reloadData()
+            break
+        default:
+            tableView.hidden = true
+            scoreBoxView.hidden = false
+            keyPad.hidden = false
+            break
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         keyPad.delegate = self
-        scoreViews.translatesAutoresizingMaskIntoConstraints = false
         toggle.items = ["Scoring", "Ends"]
-        setupScoreBoard()
+        scoreBoxView.maxShotsAllowed = round?.arrows ?? 6
+        scoreBoxView.delegate = self
+        updateScoreBoard()
     }
     
-    func setupScoreBoard() {
-        for _ in 1...6 {
-            let label = UILabel()
-            label.bounds = CGRectMake(0.0, 0.0, 50, 50)
-            label.layer.cornerRadius = 25
-            label.layer.backgroundColor = UIColor.lightGrayColor().CGColor
-            label.textAlignment = .Center
-            label.widthAnchor.constraintEqualToConstant(50).active = true;
-            label.heightAnchor.constraintEqualToConstant(50).active = true;
-            scoreViews.addArrangedSubview(label)
-            
-        }
+    func updateScoreBoard() {
+        endAverage.text = "\(round!.endsAverage)"
+        totalGoldLabel.text = "\(round!.runningTotal)"
+        endsPlayedLabel.text = "\(round!.ends.count)"
     }
+    
 }
 
 extension ScoreCardViewController: KeyPadDelegate {
     
-    func didPressKey(sender: KeyPadView, key: Int ) {
-        if selectedIndex < round?.arrows {
-            let label = scoreViews.arrangedSubviews[selectedIndex]as! UILabel
-            label.text = "\(key)"
-            selectedIndex += 1
-        }
+    func didPressKey(sender: KeyPadView, key: Int, colour: UIColor) {
+        scoreBoxView.addShot(key, colour: colour)
     }
     
     func didPressKey(sender: KeyPadView, specialKey: String) {
-        print(specialKey)
+        let realm = try! Realm()
+        try! realm.write {
+        let end = End()
+        for shot in scoreBoxView.getShots() {
+            end.shots.append(shot)
+        }
+        round?.ends.append(end)
+        realm.add(round!, update: true)
+        }
+        tableView.reloadData()
+        scoreBoxView.resetScores()
+        self.totalLabel.text = "0"
+        updateScoreBoard()
     }
-
-    
 }
+
+extension ScoreCardViewController: ScoreBoxDelegate {
+    
+    func didUpdateShots(scoreBoxView: ScoreBoxesView, shots: [Shot]) {
+        let total = shots.reduce(0) { $0 + $1.score }
+        self.totalLabel.text = "\(total)"
+    }
+}
+
+extension ScoreCardViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return round?.ends.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let end = round!.ends[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("EndCell", forIndexPath: indexPath) as! EndTableViewCell
+        cell.end = end
+        cell.endLabel.text = "End \(indexPath.row + 1)"
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    }
+}
+
+

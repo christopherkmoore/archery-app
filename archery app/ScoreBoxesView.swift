@@ -7,36 +7,40 @@
 //
 
 import UIKit
+
+protocol ScoreBoxDelegate: class {
+    func didUpdateShots(scoreBoxView: ScoreBoxesView, shots: [Shot])
+}
+
+
 @IBDesignable
 class ScoreBoxesView: UIView {
     
     var view: UIView!
     var currentlySelectedIndex = 0
-    var countOfInputs = 0
-    var inputs: [UITextView]!
-    
-    func addInput() -> UITextView {
-        let textView = UITextView()
-        textView.layer.borderColor = UIColor.blueColor().CGColor
-        textView.layer.borderWidth = 1
-        textView.layer.cornerRadius = 3
-        return textView
-    }
+    var maxShotsAllowed = 6
+    var stackView: UIStackView!
+    private var shots: [Shot] = []
+    weak var delegate: ScoreBoxDelegate?
     
     func displayInputs(){
-        self.backgroundColor = UIColor.redColor()
-        let stackView = UIStackView()
-        stackView.axis = .Horizontal
-        stackView.distribution = .FillEqually
-        stackView.alignment = .Fill
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        for _ in 0...countOfInputs {
-            stackView.addArrangedSubview(addInput())
+        for _ in 1...6 {
+            let label = UILabel()
+            label.bounds = CGRectMake(0.0, 0.0, 40, 40)
+            label.layer.cornerRadius = 20
+            label.layer.backgroundColor = UIColor(hexString: "#eeeeee").CGColor
+            label.textAlignment = .Center
+            label.textColor = UIColor.whiteColor()
+            label.widthAnchor.constraintEqualToConstant(40).active = true;
+            label.heightAnchor.constraintEqualToConstant(40).active = true;
+            label.userInteractionEnabled = true
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self, action: #selector(didTapShot))
+            label.addGestureRecognizer(tap)
+            stackView.addArrangedSubview(label)
+            
         }
         self.addSubview(stackView)
-        
         //autolayout the stack view - pin 30 up 20 left 20 right 30 down
         let viewsDictionary = ["stackView":stackView]
         let stackView_H = NSLayoutConstraint.constraintsWithVisualFormat(
@@ -51,25 +55,67 @@ class ScoreBoxesView: UIView {
             views: viewsDictionary)
         self.addConstraints(stackView_H)
         self.addConstraints(stackView_V)
+    }
+    
+    func didTapShot(sender: UITapGestureRecognizer) {
+        let tappedIndex = stackView.subviews.indexOf(sender.view!)!
+        if tappedIndex < maxShotsAllowed {
+            currentlySelectedIndex = tappedIndex
+        }
+
+    }
+    
+    func addShot(score: Int, colour: UIColor) {
+        if currentlySelectedIndex < maxShotsAllowed {
+            let shot = Shot()
+            shot.colour = colour.toHexString()
+            shot.score = score
+            if shots.indices.contains(currentlySelectedIndex) {
+                shots[currentlySelectedIndex] = shot
+            } else {
+                shots.append(shot)
+            }
+
+            let label = stackView.arrangedSubviews[currentlySelectedIndex] as? UILabel
+            label?.text = "\(score)"
+            label?.layer.backgroundColor = colour.CGColor
+            currentlySelectedIndex += 1
+            delegate?.didUpdateShots(self, shots: shots)
+        }
         
+    }
+    
+    func getShots() -> [Shot] {
+        return shots
+    }
+    
+    func resetScores() {
+        currentlySelectedIndex = 0
+        for label in stackView.subviews as! [UILabel] {
+            label.layer.backgroundColor = UIColor(hexString: "#eeeeee").CGColor
+            label.text = ""
+        }
+        shots.removeAll()
+    }
+    
+    func setupStackView() {
+        stackView = UIStackView()
+        stackView.axis = .Horizontal
+        stackView.distribution = .EqualSpacing
+        stackView.alignment = .Center
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("called override init", countOfInputs)
+        setupStackView()
         displayInputs()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        print("required init", countOfInputs)
-        displayInputs()
-    }
-    
-     init(frame: CGRect, numberOfInputs: Int) {
-       self.countOfInputs = numberOfInputs
-        let newFrame = CGRectMake(0,20,frame.width,44);
-        super.init(frame: newFrame)
+        setupStackView()
         displayInputs()
     }
 }

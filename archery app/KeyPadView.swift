@@ -9,7 +9,7 @@
 import UIKit
 
 protocol KeyPadDelegate: class {
-    func didPressKey(sender: KeyPadView, key: Int )
+    func didPressKey(sender: KeyPadView, key: Int, colour: UIColor )
     func didPressKey(sender: KeyPadView, specialKey: String)
 }
 @IBDesignable
@@ -91,6 +91,7 @@ class KeyPadView: UIView {
         
         //autolayout the stack view - pin 30 up 20 left 20 right 30 down
         let viewsDictionary = ["stackView":stackView]
+        
         let stackView_H = NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-0-[stackView]-0-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
@@ -117,7 +118,7 @@ class KeyPadView: UIView {
     }
     
     func numberPressed(sender: UIButton) {
-        self.delegate?.didPressKey(self, key: Int(sender.titleLabel!.text!)!)
+        self.delegate?.didPressKey(self, key: Int(sender.titleLabel!.text!)!, colour: sender.backgroundColor!)
     }
     
     func specialKeyPressed(sender: UIButton) {

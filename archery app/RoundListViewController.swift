@@ -34,8 +34,14 @@ class RoundListViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         if segue!.identifier == "SelectedRound" {
             let viewController: ScoreCardViewController = segue!.destinationViewController as! ScoreCardViewController
-            let indexPath = self.tableView.indexPathForSelectedRow!
-            viewController.round = self.rounds![indexPath.row]
+            
+            if let round = sender as? Round {
+                viewController.round = round
+            } else {
+                let indexPath = self.tableView.indexPathForSelectedRow!
+                viewController.round = self.rounds![indexPath.row]
+            }
+            
             
         }
         
@@ -66,7 +72,7 @@ extension RoundListViewController: RoundSelectionDelegate {
         print(round)
         dispatch_async(dispatch_get_main_queue()){
             sender.dismissViewControllerAnimated(true, completion: {
-            self.performSegueWithIdentifier("SelectedRound", sender: self)
+            self.performSegueWithIdentifier("SelectedRound", sender: round)
             })
             
         }
