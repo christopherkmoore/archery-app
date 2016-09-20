@@ -11,7 +11,7 @@ import RealmSwift
 
 
 protocol RoundSelectionDelegate: class {
-    func didSelectRound(sender: RoundSelectionViewController, round: Round)
+    func didSelectRound(_ sender: RoundSelectionViewController, round: Round)
 }
 
 class RoundSelectionViewController: UIViewController {
@@ -33,7 +33,7 @@ class RoundSelectionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    @IBAction func bowChoiceClicked(sender: SegmentedControl) {
+    @IBAction func bowChoiceClicked(_ sender: SegmentedControl) {
         print(sender.selectedIndex)
     }
     @IBOutlet weak var bowChoiceControl: SegmentedControl!
@@ -43,11 +43,11 @@ class RoundSelectionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelButtonClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButtonClicked(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func createRoundClicked(sender: AnyObject) {
+    @IBAction func createRoundClicked(_ sender: AnyObject) {
         let realm = try! Realm()
         // You only need to do this once (per thread)
         let round = Round()
@@ -68,13 +68,13 @@ class RoundSelectionViewController: UIViewController {
     }
 
     func setupView() {
-        cancelButton.layer.borderColor = UIColor.whiteColor().CGColor
+        cancelButton.layer.borderColor = UIColor.white.cgColor
         cancelButton.layer.cornerRadius = 8.0
         cancelButton.layer.borderWidth = 1
         createRoundButton.layer.cornerRadius = 8.0
-        roundNameInput.layer.backgroundColor = UIColor.clearColor().CGColor
+        roundNameInput.layer.backgroundColor = UIColor.clear.cgColor
         roundNameInput.layer.borderWidth = 1
-        roundNameInput.layer.borderColor = UIColor.whiteColor().CGColor
+        roundNameInput.layer.borderColor = UIColor.white.cgColor
         roundNameInput.layer.cornerRadius = 8
     }
 
@@ -83,11 +83,11 @@ class RoundSelectionViewController: UIViewController {
 
 extension RoundSelectionViewController: UITextFieldDelegate {
     
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {  //delegate method
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {  //delegate method
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
         return true
     }

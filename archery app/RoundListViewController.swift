@@ -17,10 +17,10 @@ class RoundListViewController: UIViewController {
     
     @IBOutlet weak var createNewRoundButton: UIButton!
     
-    @IBAction func createNewRoundClicked(sender: AnyObject) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("SelectRoundVC") as! RoundSelectionViewController
+    @IBAction func createNewRoundClicked(_ sender: AnyObject) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectRoundVC") as! RoundSelectionViewController
         vc.delegate = self
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -31,9 +31,9 @@ class RoundListViewController: UIViewController {
         self.tableView.reloadData()
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue?, sender: Any?) {
         if segue!.identifier == "SelectedRound" {
-            let viewController: ScoreCardViewController = segue!.destinationViewController as! ScoreCardViewController
+            let viewController: ScoreCardViewController = segue!.destination as! ScoreCardViewController
             
             if let round = sender as? Round {
                 viewController.round = round
@@ -50,29 +50,29 @@ class RoundListViewController: UIViewController {
 
 extension RoundListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rounds?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let round = rounds![indexPath.row]
         let cell = UITableViewCell()
         cell.textLabel!.text = round.name
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("SelectedRound", sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "SelectedRound", sender: self)
     }
 }
 
 extension RoundListViewController: RoundSelectionDelegate {
     
-    func didSelectRound(sender: RoundSelectionViewController, round: Round) {
+    func didSelectRound(_ sender: RoundSelectionViewController, round: Round) {
         print(round)
-        dispatch_async(dispatch_get_main_queue()){
-            sender.dismissViewControllerAnimated(true, completion: {
-            self.performSegueWithIdentifier("SelectedRound", sender: round)
+        DispatchQueue.main.async{
+            sender.dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "SelectedRound", sender: round)
             })
             
         }

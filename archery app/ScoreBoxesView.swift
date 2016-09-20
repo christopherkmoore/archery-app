@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ScoreBoxDelegate: class {
-    func didUpdateShots(scoreBoxView: ScoreBoxesView, shots: [Shot])
+    func didUpdateShots(_ scoreBoxView: ScoreBoxesView, shots: [Shot])
 }
 
 
@@ -20,20 +20,20 @@ class ScoreBoxesView: UIView {
     var currentlySelectedIndex = 0
     var maxShotsAllowed = 6
     var stackView: UIStackView!
-    private var shots: [Shot] = []
+    fileprivate var shots: [Shot] = []
     weak var delegate: ScoreBoxDelegate?
     
     func displayInputs(){
         for _ in 1...6 {
             let label = UILabel()
-            label.bounds = CGRectMake(0.0, 0.0, 40, 40)
+            label.bounds = CGRect(x: 0.0, y: 0.0, width: 40, height: 40)
             label.layer.cornerRadius = 20
-            label.layer.backgroundColor = UIColor(hexString: "#eeeeee").CGColor
-            label.textAlignment = .Center
-            label.textColor = UIColor.whiteColor()
-            label.widthAnchor.constraintEqualToConstant(40).active = true;
-            label.heightAnchor.constraintEqualToConstant(40).active = true;
-            label.userInteractionEnabled = true
+            label.layer.backgroundColor = UIColor(hexString: "#eeeeee").cgColor
+            label.textAlignment = .center
+            label.textColor = UIColor.white
+            label.widthAnchor.constraint(equalToConstant: 40).isActive = true;
+            label.heightAnchor.constraint(equalToConstant: 40).isActive = true;
+            label.isUserInteractionEnabled = true
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(
                 target: self, action: #selector(didTapShot))
             label.addGestureRecognizer(tap)
@@ -43,13 +43,13 @@ class ScoreBoxesView: UIView {
         self.addSubview(stackView)
         //autolayout the stack view - pin 30 up 20 left 20 right 30 down
         let viewsDictionary = ["stackView":stackView]
-        let stackView_H = NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-0-[stackView]-0-|",  //horizontal constraint 20 points from left and right side
+        let stackView_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[stackView]-0-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: viewsDictionary)
-        let stackView_V = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[stackView]-0-|", //vertical constraint 30 points from top and bottom
+        let stackView_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[stackView]-0-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: viewsDictionary)
@@ -57,15 +57,15 @@ class ScoreBoxesView: UIView {
         self.addConstraints(stackView_V)
     }
     
-    func didTapShot(sender: UITapGestureRecognizer) {
-        let tappedIndex = stackView.subviews.indexOf(sender.view!)!
+    func didTapShot(_ sender: UITapGestureRecognizer) {
+        let tappedIndex = stackView.subviews.index(of: sender.view!)!
         if tappedIndex < maxShotsAllowed {
             currentlySelectedIndex = tappedIndex
         }
 
     }
     
-    func addShot(score: Int, colour: UIColor) {
+    func addShot(_ score: Int, colour: UIColor) {
         if currentlySelectedIndex < maxShotsAllowed {
             let shot = Shot()
             shot.colour = colour.toHexString()
@@ -78,7 +78,7 @@ class ScoreBoxesView: UIView {
 
             let label = stackView.arrangedSubviews[currentlySelectedIndex] as? UILabel
             label?.text = "\(score)"
-            label?.layer.backgroundColor = colour.CGColor
+            label?.layer.backgroundColor = colour.cgColor
             currentlySelectedIndex += 1
             delegate?.didUpdateShots(self, shots: shots)
         }
@@ -92,7 +92,7 @@ class ScoreBoxesView: UIView {
     func resetScores() {
         currentlySelectedIndex = 0
         for label in stackView.subviews as! [UILabel] {
-            label.layer.backgroundColor = UIColor(hexString: "#eeeeee").CGColor
+            label.layer.backgroundColor = UIColor(hexString: "#eeeeee").cgColor
             label.text = ""
         }
         shots.removeAll()
@@ -100,9 +100,9 @@ class ScoreBoxesView: UIView {
     
     func setupStackView() {
         stackView = UIStackView()
-        stackView.axis = .Horizontal
-        stackView.distribution = .EqualSpacing
-        stackView.alignment = .Center
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
     }

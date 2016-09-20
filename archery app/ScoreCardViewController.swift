@@ -26,23 +26,23 @@ class ScoreCardViewController: UIViewController {
     
     var round: Round?
     
-    @IBAction func toggleClicked(sender: SegmentedControl) {
+    @IBAction func toggleClicked(_ sender: SegmentedControl) {
         switch(sender.selectedIndex) {
         case 0:
-            tableView.hidden = true
-            scoreBoxView.hidden = false
-            keyPad.hidden = false
+            tableView.isHidden = true
+            scoreBoxView.isHidden = false
+            keyPad.isHidden = false
             break
         case 1:
-            tableView.hidden = false
-            scoreBoxView.hidden = true
-            keyPad.hidden = true
+            tableView.isHidden = false
+            scoreBoxView.isHidden = true
+            keyPad.isHidden = true
             tableView.reloadData()
             break
         default:
-            tableView.hidden = true
-            scoreBoxView.hidden = false
-            keyPad.hidden = false
+            tableView.isHidden = true
+            scoreBoxView.isHidden = false
+            keyPad.isHidden = false
             break
         }
     }
@@ -66,11 +66,11 @@ class ScoreCardViewController: UIViewController {
 
 extension ScoreCardViewController: KeyPadDelegate {
     
-    func didPressKey(sender: KeyPadView, key: Int, colour: UIColor) {
+    func didPressKey(_ sender: KeyPadView, key: Int, colour: UIColor) {
         scoreBoxView.addShot(key, colour: colour)
     }
     
-    func didPressKey(sender: KeyPadView, specialKey: String) {
+    func didPressKey(_ sender: KeyPadView, specialKey: String) {
         let realm = try! Realm()
         try! realm.write {
         let end = End()
@@ -89,7 +89,7 @@ extension ScoreCardViewController: KeyPadDelegate {
 
 extension ScoreCardViewController: ScoreBoxDelegate {
     
-    func didUpdateShots(scoreBoxView: ScoreBoxesView, shots: [Shot]) {
+    func didUpdateShots(_ scoreBoxView: ScoreBoxesView, shots: [Shot]) {
         let total = shots.reduce(0) { $0 + $1.score }
         self.totalLabel.text = "\(total)"
     }
@@ -97,19 +97,19 @@ extension ScoreCardViewController: ScoreBoxDelegate {
 
 extension ScoreCardViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return round?.ends.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let end = round!.ends[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("EndCell", forIndexPath: indexPath) as! EndTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EndCell", for: indexPath) as! EndTableViewCell
         cell.end = end
-        cell.endLabel.text = "End \(indexPath.row + 1)"
+        cell.endLabel.text = "End \((indexPath as NSIndexPath).row + 1)"
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 

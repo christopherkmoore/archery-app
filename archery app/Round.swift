@@ -16,12 +16,12 @@ enum BowType: String {
 
 class Round: Object {
     
-    dynamic var id =  NSUUID().UUIDString
+    dynamic var id =  UUID().uuidString
     let ends = List<End>()
     dynamic var name: String?
     dynamic var arrows: Int = 0
     
-    private dynamic var bowType = BowType.Recurve.rawValue
+    fileprivate dynamic var bowType = BowType.Recurve.rawValue
     
     var bow: BowType {
         get{

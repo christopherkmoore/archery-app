@@ -9,8 +9,8 @@
 import UIKit
 
 protocol KeyPadDelegate: class {
-    func didPressKey(sender: KeyPadView, key: Int, colour: UIColor )
-    func didPressKey(sender: KeyPadView, specialKey: String)
+    func didPressKey(_ sender: KeyPadView, key: Int, colour: UIColor )
+    func didPressKey(_ sender: KeyPadView, specialKey: String)
 }
 @IBDesignable
 class KeyPadView: UIView {
@@ -41,10 +41,10 @@ class KeyPadView: UIView {
         withColor color:UIColor,
                   title:String) -> UIButton
     {
-        let newButton = UIButton(type: .System)
+        let newButton = UIButton(type: .system)
         newButton.backgroundColor = color
-        newButton.setTitle(title, forState: .Normal)
-        newButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        newButton.setTitle(title, for: UIControlState())
+        newButton.setTitleColor(UIColor.white, for: UIControlState())
         newButton.layer.cornerRadius = 10
         newButton.titleLabel!.font =  UIFont(name: "HelveticaNeue-Bold", size: 30)
         return newButton
@@ -52,38 +52,38 @@ class KeyPadView: UIView {
     
     func displayKeyboard(){
         let stackView = UIStackView()
-        stackView.axis = .Vertical
-        stackView.distribution = .FillEqually
-        stackView.alignment = .Fill
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         // draw basic buttons
-        for (rowNumber, row) in buttonRows.enumerate() {
+        for (rowNumber, row) in buttonRows.enumerated() {
             let rowStackview = UIStackView()
-            rowStackview.axis = .Horizontal
-            rowStackview.distribution = .FillEqually
-            rowStackview.alignment = .Fill
+            rowStackview.axis = .horizontal
+            rowStackview.distribution = .fillEqually
+            rowStackview.alignment = .fill
             rowStackview.spacing = 10
-            for (_, text) in row.enumerate() {
+            for (_, text) in row.enumerated() {
                 
                 let button = colorButton(withColor: colorDictionary[rowNumber]!,title: text)
-                button.addTarget(self, action: #selector(KeyPadView.numberPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(KeyPadView.numberPressed(_:)), for: UIControlEvents.touchUpInside)
                 rowStackview.addArrangedSubview(button)
             }
             stackView.addArrangedSubview(rowStackview)
         }
         let rowStackview = UIStackView()
-        rowStackview.axis = .Horizontal
-        rowStackview.distribution = .FillEqually
-        rowStackview.alignment = .Fill
+        rowStackview.axis = .horizontal
+        rowStackview.distribution = .fillEqually
+        rowStackview.alignment = .fill
         rowStackview.spacing = 5
         let zeroButton = colorButton(withColor: colorDictionary[4]!, title: "0")
-        zeroButton.addTarget(self, action: #selector(KeyPadView.numberPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        zeroButton.addTarget(self, action: #selector(KeyPadView.numberPressed(_:)), for: UIControlEvents.touchUpInside)
         rowStackview.addArrangedSubview(zeroButton)
         
         let okButton = colorButton(withColor: colorDictionary[5]!, title: "OK")
-        okButton.addTarget(self, action: #selector(KeyPadView.specialKeyPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        okButton.addTarget(self, action: #selector(KeyPadView.specialKeyPressed(_:)), for: UIControlEvents.touchUpInside)
         rowStackview.addArrangedSubview(okButton)
         
         stackView.addArrangedSubview(rowStackview)
@@ -92,13 +92,13 @@ class KeyPadView: UIView {
         //autolayout the stack view - pin 30 up 20 left 20 right 30 down
         let viewsDictionary = ["stackView":stackView]
         
-        let stackView_H = NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-0-[stackView]-0-|",  //horizontal constraint 20 points from left and right side
+        let stackView_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[stackView]-0-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: viewsDictionary)
-        let stackView_V = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[stackView]-0-|", //vertical constraint 30 points from top and bottom
+        let stackView_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[stackView]-0-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: viewsDictionary)
@@ -117,11 +117,11 @@ class KeyPadView: UIView {
         displayKeyboard()
     }
     
-    func numberPressed(sender: UIButton) {
+    func numberPressed(_ sender: UIButton) {
         self.delegate?.didPressKey(self, key: Int(sender.titleLabel!.text!)!, colour: sender.backgroundColor!)
     }
     
-    func specialKeyPressed(sender: UIButton) {
+    func specialKeyPressed(_ sender: UIButton) {
         self.delegate?.didPressKey(self, specialKey: sender.titleLabel!.text!)
     }
     

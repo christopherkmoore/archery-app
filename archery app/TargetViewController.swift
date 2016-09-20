@@ -10,7 +10,7 @@ import UIKit
 
 class TargetViewController: UIViewController {
     
-    let colorArray: [UIColor] = [UIColor.yellowColor(), UIColor.yellowColor(), UIColor.redColor(), UIColor.redColor(), UIColor.blueColor(), UIColor.blueColor(), UIColor.blackColor(), UIColor.blackColor(), UIColor.whiteColor(), UIColor.whiteColor()]
+    let colorArray: [UIColor] = [UIColor.yellow, UIColor.yellow, UIColor.red, UIColor.red, UIColor.blue, UIColor.blue, UIColor.black, UIColor.black, UIColor.white, UIColor.white]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,25 +18,25 @@ class TargetViewController: UIViewController {
         let step = width/10
         let centerPoint = view.center // dunno if that actually works
         
-        for idx in (1...10).reverse() {
+        for idx in (1...10).reversed() {
             let curRadius = Int(step) * Int(idx)
             UIGraphicsBeginImageContextWithOptions(CGSize(width: curRadius, height: curRadius), false, 0)
             let context = UIGraphicsGetCurrentContext()
             let rectangle = CGRect(x: 0, y: 0, width: curRadius, height: curRadius)
             
-            CGContextSetFillColorWithColor(context, colorArray[Int(idx) - 1].CGColor)
-            CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-            CGContextSetLineWidth(context, 1)
+            context?.setFillColor(colorArray[Int(idx) - 1].cgColor)
+            context?.setStrokeColor(UIColor.black.cgColor)
+            context?.setLineWidth(1)
             
-            CGContextAddEllipseInRect(context, rectangle)
-            CGContextDrawPath(context, .FillStroke)
+            context?.addEllipse(in: rectangle)
+            context?.drawPath(using: .fillStroke)
             
             let img = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             let imageView = UIImageView(image: img!)
             imageView.center = centerPoint
             let tapGestureRecognizer = UILongPressGestureRecognizer(target:self, action:#selector(TargetViewController.imageTapped(_:)))
-            imageView.userInteractionEnabled = true
+            imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(tapGestureRecognizer)
             view.addSubview(imageView)
             // draw circle with     curRadius and same center as the rest
@@ -45,25 +45,25 @@ class TargetViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func imageTapped(img: AnyObject)
+    func imageTapped(_ img: AnyObject)
     {
         let curRadius = 10
         UIGraphicsBeginImageContextWithOptions(CGSize(width: curRadius, height: curRadius), false, 0)
         let context = UIGraphicsGetCurrentContext()
         let rectangle = CGRect(x: 0, y: 0, width: curRadius, height: curRadius)
         
-        CGContextSetFillColorWithColor(context, UIColor.brownColor().CGColor)
-        CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-        CGContextSetLineWidth(context, 1)
+        context?.setFillColor(UIColor.brown.cgColor)
+        context?.setStrokeColor(UIColor.black.cgColor)
+        context?.setLineWidth(1)
         
-        CGContextAddEllipseInRect(context, rectangle)
-        CGContextDrawPath(context, .FillStroke)
+        context?.addEllipse(in: rectangle)
+        context?.drawPath(using: .fillStroke)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         let imageView = UIImageView(image: image!)
 
-        let touchLocation = img.locationInView(img.view.window)
+        let touchLocation = img.location(in: img.view.window)
         print(touchLocation)
         imageView.center = touchLocation
         view.addSubview(imageView)

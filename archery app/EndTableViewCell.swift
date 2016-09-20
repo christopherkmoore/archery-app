@@ -19,28 +19,28 @@ class EndTableViewCell: UITableViewCell {
             stackView.subviews.forEach({ $0.removeFromSuperview() })
             for shot in end!.shots {
                 let label = UILabel()
-                label.bounds = CGRectMake(0.0, 0.0, 30, 30)
+                label.bounds = CGRect(x: 0.0,y: 0.0,width: 30,height: 30)
                 label.layer.cornerRadius = 15
-                label.layer.backgroundColor = UIColor(hexString: shot.colour).CGColor
+                label.layer.backgroundColor = UIColor(hexString: shot.colour).cgColor
                 label.text = "\(shot.score)"
-                label.textAlignment = .Center
-                label.textColor = UIColor.whiteColor()
-                label.widthAnchor.constraintEqualToConstant(30).active = true;
-                label.heightAnchor.constraintEqualToConstant(30).active = true;
+                label.textAlignment = .center
+                label.textColor = UIColor.white
+                label.widthAnchor.constraint(equalToConstant: 30).isActive = true;
+                label.heightAnchor.constraint(equalToConstant: 30).isActive = true;
                 stackView.addArrangedSubview(label)
                 stackView.translatesAutoresizingMaskIntoConstraints = false
             }
             
             let totalSum = end!.shots.reduce(0) { $0 + $1.score }
             let label = UILabel()
-            label.bounds = CGRectMake(0.0, 0.0, 30, 30)
+            label.bounds = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
             label.layer.cornerRadius = 15
-            label.layer.backgroundColor = UIColor(hexString: "#4000ff").CGColor
+            label.layer.backgroundColor = UIColor(hexString: "#4000ff").cgColor
             label.text = "\(totalSum)"
-            label.textAlignment = .Center
-            label.textColor = UIColor.whiteColor()
-            label.widthAnchor.constraintEqualToConstant(30).active = true;
-            label.heightAnchor.constraintEqualToConstant(30).active = true;
+            label.textAlignment = .center
+            label.textColor = UIColor.white
+            label.widthAnchor.constraint(equalToConstant: 30).isActive = true;
+            label.heightAnchor.constraint(equalToConstant: 30).isActive = true;
             stackView.addArrangedSubview(label)
         }
     }
@@ -50,7 +50,7 @@ class EndTableViewCell: UITableViewCell {
         
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

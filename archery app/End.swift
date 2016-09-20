@@ -11,6 +11,6 @@ import RealmSwift
 
 class End: Object {
     let shots = List<Shot>()
-    dynamic var createdAt = NSDate()
-    dynamic var updatedAt = NSDate()
+    dynamic var createdAt = Date()
+    dynamic var updatedAt = Date()
 }
